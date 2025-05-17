@@ -1,0 +1,125 @@
+/* Main container for the app */
+body {
+  background-color: #212529;
+  color: #f8f9fa;
+  font-family: 'Arial', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  margin: 20px 0;
+  padding: 10px;
+  color: #f8f9fa;
+}
+
+/* Layout container to divide left and right sections */
+main {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin: 20px auto;
+  width: 90%; /* Use most of the screen width */
+  max-width: 1400px; /* Limit maximum width on very large screens */
+  padding: 0 20px;
+}
+
+/* Left section for input */
+.left {
+  width: 45%; /* Slightly less than half to account for gap */
+  padding: 25px;
+  background-color: #343a40; /* Darker background but still readable */
+  border-radius: 10px;
+  border: 1px solid #495057;
+  height: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Right section for displaying the output */
+.right {
+  width: 45%; /* Slightly less than half to account for gap */
+  padding: 25px;
+  background-color: #343a40; /* Matching dark background */
+  border-radius: 10px;
+  border: 1px solid #495057;
+  min-height: 400px; /* Minimum height */
+  max-height: 600px; /* Maximum height */
+  overflow-y: auto; /* Make it scrollable */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.right h3 {
+  font-family: 'Arial', sans-serif;
+  color: #f8f9fa;
+  margin-top: 0;
+  border-bottom: 1px solid #6c757d;
+  padding-bottom: 10px;
+}
+
+/* Form Styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #f8f9fa;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  padding: 12px;
+  border: 1px solid #6c757d;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: #212529;
+  color: #f8f9fa;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]::placeholder {
+  color: #6c757d;
+}
+
+input:focus, 
+select:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+}
+
+.generate {
+  padding: 12px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.generate:hover {
+  background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    width: 95%;
+  }
+  
+  .left, .right {
+    width: 100%;
+  }
+}
