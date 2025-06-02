@@ -14,7 +14,7 @@ function App() {
   // Function to generate outline using backend API
   async function generateOutline() {
     try {
-      const response = await axios.post('${BACKEND_URI}/ai/get-review', {
+      const response = await axios.post('https://gemini-blog-generator-liy3.onrender.com/ai/get-review', {
         title,
         tone,
         wordCount
