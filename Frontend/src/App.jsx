@@ -4,7 +4,7 @@ import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 import axios from 'axios';
 import './App.css';
-const BACKEND_URI = import.meta.env.VITE_BACKEND_URI || 'http://localhost:3000'
+const BACKEND_URI = import.meta.env.VITE_BACKEND_URI || 'https://gemini-blog-generator-liy3.onrender.com'
 function App() {
   const [title, setTitle] = useState("");
   const [tone, setTone] = useState("professional");
