@@ -17,12 +17,17 @@ h2 {
 /* Layout container to divide left and right sections */
 main {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 30px;
   margin: 20px auto;
   width: 90%; /* Use most of the screen width */
   max-width: 1400px; /* Limit maximum width on very large screens */
   padding: 0 20px;
+}
+
+/* When there's no outline, center the form */
+main.no-outline {
+  justify-content: center;
 }
 
 /* Left section for input */
@@ -34,6 +39,13 @@ main {
   border: 1px solid #495057;
   height: auto;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+}
+
+/* When there's no outline, make the form take more width */
+main.no-outline .left {
+  width: 100%;
+  max-width: 600px;
 }
 
 /* Right section for displaying the output */
