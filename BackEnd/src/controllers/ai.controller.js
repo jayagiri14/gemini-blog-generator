@@ -2,40 +2,47 @@ const aiService = require("../services/ai.service")
 
 
 module.exports.getReview = async (req, res) => {
+    try {
+        const { title, tone, wordCount } = req.body;
+        
+        console.log('Request received:', { title, tone, wordCount });
+        
+        // Input validation
+        if (!title) {
+            return res.status(400).send("Title is required.");
+        }
 
-    const { title, tone, wordCount } = req.body;
-     // Input validation
-    if (!title) {
-        return res.status(400).send("Title is required.");
+        if (!tone) {
+            return res.status(400).send("Tone is required.");
+        }
+
+        if (!wordCount || isNaN(wordCount)) {
+            return res.status(400).send("A valid word count is required.");
+        }
+
+        const prompt = `
+        Generate a blog post outline for the topic:
+        "${title}"
+
+        Tone: ${tone}
+        Target Word Count: Approximately ${wordCount} words
+
+        Please follow this format:
+        1. A short introduction (2–4 sentences)
+        2. 4–6 section headings with 2–4 bullet points each
+        3. Markdown formatting (### Headings, - bullets)
+        4. Adapt style to the requested tone
+        `;
+
+        console.log('Calling AI service...');
+        const response = await aiService(prompt);
+        console.log('AI service response received');
+
+        res.send(response);
+    } catch (error) {
+        console.error('Error in getReview:', error);
+        res.status(500).send("An error occurred while generating the outline.");
     }
-
-    if (!tone) {
-        return res.status(400).send("Tone is required.");
-    }
-
-    if (!wordCount || isNaN(wordCount)) {
-        return res.status(400).send("A valid word count is required.");
-    }
-
-    const prompt = `
-    Generate a blog post outline for the topic:
-    "${title}"
-
-    Tone: ${tone}
-    Target Word Count: Approximately ${wordCount} words
-
-    Please follow this format:
-    1. A short introduction (2–4 sentences)
-    2. 4–6 section headings with 2–4 bullet points each
-    3. Markdown formatting (### Headings, - bullets)
-    4. Adapt style to the requested tone
-    `;
-
-    const response = await aiService(prompt);
-
-
-    res.send(response);
-
 }
 
 module.exports.exportHTML = async (req, res) => {

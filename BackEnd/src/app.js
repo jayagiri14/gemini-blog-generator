@@ -9,10 +9,13 @@ const corsOptions = {
   origin: [
     'http://localhost:5173', // For local development
     'https://gemini-blog-generator-frontend.onrender.com', // Your frontend domain
-    'https://gemini-blog-generator.onrender.com' // Alternative frontend domain
+    'https://gemini-blog-generator.onrender.com', // Alternative frontend domain
+    'https://gemini-blog-generator-liy3.onrender.com' // Your actual backend domain (for testing)
   ],
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 };
 
 app.use(cors(corsOptions))
